@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AppConstant{
   static String appMainName = 'Delhivery';
-  static String appPoweredBy = 'Powered By Vaishanavas';
+  static String appPoweredBy = 'Powered By PYG';
   static const appMainColor = Color(0xFFbf1b08);
   static const appScendryColor = Color(0xFF981206);
   static const appTextColor = Color(0xFFFBF5F4);

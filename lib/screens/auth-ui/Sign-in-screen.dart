@@ -7,14 +7,13 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:vijayho/controllers/googlr-sign-in-controller.dart';
+// import 'package:vijayho/controllers/google-sign-in-controller.dart';
 import 'package:vijayho/controllers/sign-in-controller.dart';
 import 'package:vijayho/screens/admin-panel/admin-main-screen.dart';
 import 'package:vijayho/screens/auth-ui/Sign-up-screen.dart';
 import 'package:vijayho/screens/auth-ui/forget-password-screen.dart';
 import 'package:vijayho/screens/user-panel/main-screen.dart';
 import 'package:vijayho/utils/app-constant.dart';
-
 import '../../controllers/get-user-data-controller.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -173,7 +172,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 backgroundColor: AppConstant.appScendryColor,
                                 colorText: AppConstant.appTextColor,
                               );
-                              Get.offAll(() => AdminMainScreemn());
+                              Get.offAll(() => AdminMainScreen());
                             } else {
                               Get.offAll(() => MainScreen());
                               Get.snackbar(

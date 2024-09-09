@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_import, implementation_imports, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_label, unused_local_variable, file_names
+// ignore_for_file: prefer_const_constructors, unnecessary_import, implementation_imports, unused_import, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, unused_label, unused_local_variable, file_names, unused_element
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +15,10 @@ class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignScreenState extends State<SignUpScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final SignUpController signUpController = Get.put(SignUpController());
   TextEditingController username = TextEditingController();
   TextEditingController userEmail = TextEditingController();
@@ -178,7 +178,7 @@ class _SignScreenState extends State<SignUpScreen> {
                   ),
                   child: TextButton(
                     child: Text(
-                      "SIGN IN",
+                      "SIGN UP",
                       style: TextStyle(
                         color: AppConstant.appTextColor,
                         fontSize: 18.0,

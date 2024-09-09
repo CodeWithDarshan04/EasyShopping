@@ -1,18 +1,88 @@
-// ignore_for_file: file_names, unused_field, body_might_complete_normally_nullable, unused_local_variable
+// // ignore_for_file: file_names, unused_field, body_might_complete_normally_nullable, unused_local_variable
+
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter_easyloading/flutter_easyloading.dart';
+// import 'package:get/get.dart';
+// import 'package:vijayho/models/user-models.dart';
+// import 'package:vijayho/utils/app-constant.dart';
+
+// class SignUpController extends GetxController {
+//   final FirebaseAuth _auth = FirebaseAuth.instance;
+//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+//   // For Password Vissibility
+
+//   var isPasswordVisible = false.obs;
+
+//   Future<UserCredential?> signUpMethod(
+//     String userName,
+//     String userEmail,
+//     String userPhone,
+//     String userCity,
+//     String userPassword,
+//     String userDeviceToken,
+//   ) async {
+//     try {
+//       EasyLoading.show(status: "Please wait");
+//       UserCredential userCredential =
+//           await _auth.createUserWithEmailAndPassword(
+//         email: userEmail,
+//         password: userPassword,
+//       );
+//       //  send email verification
+//       await userCredential.user!.sendEmailVerification();
+
+//       UserModel userModel = UserModel(
+//         uId: userCredential.user!.uid,
+//         username: userName,
+//         email: userEmail,
+//         phone: userPhone,
+//         userImg: '',
+//         userDeviceToken: userDeviceToken,
+//         country: '',
+//         userAddress: '',
+//         street: '',
+//         isAdmin: false,
+//         isActive: true,
+//         createdOn: DateTime.now(),
+//         city: userCity,
+//       );
+
+// // add data into database
+//       // add data into database
+//       _firestore
+//           .collection('users')
+//           .doc(userCredential.user!.uid)
+//           .set(userModel.toMap());
+//       EasyLoading.dismiss();
+//       return userCredential;
+//     } on FirebaseAuthException catch (e) {
+//       EasyLoading.dismiss();
+//       Get.snackbar(
+//         "Error",
+//         "$e",
+//         snackPosition: SnackPosition.BOTTOM,
+//         backgroundColor: AppConstant.appScendryColor,
+//         colorText: AppConstant.appTextColor,
+//       );
+//     }
+//   }
+// }
+// ignore_for_file: file_names, unused_field, body_might_complete_normally_nullable, unused_local_variable, depend_on_referenced_packages
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:vijayho/models/user-models.dart';
+import 'package:vijayho/utils/app-constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:vijayho/models/user-models.dart';
-import 'package:vijayho/utils/app-constant.dart';
 
 class SignUpController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  // For Password Vissibility
-
+  //for password visibilty
   var isPasswordVisible = false.obs;
 
   Future<UserCredential?> signUpMethod(
@@ -24,12 +94,14 @@ class SignUpController extends GetxController {
     String userDeviceToken,
   ) async {
     try {
-      EasyLoading.show(status: "Please Wait...");
+      EasyLoading.show(status: "Please wait");
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
-              email: userEmail, password: userPassword);
+        email: userEmail,
+        password: userPassword,
+      );
 
-      //  send email verification
+      // send email verification
       await userCredential.user!.sendEmailVerification();
 
       UserModel userModel = UserModel(
@@ -48,12 +120,11 @@ class SignUpController extends GetxController {
         city: userCity,
       );
 
-// add data into database
+      // add data into database
       _firestore
           .collection('users')
           .doc(userCredential.user!.uid)
           .set(userModel.toMap());
-
       EasyLoading.dismiss();
       return userCredential;
     } on FirebaseAuthException catch (e) {

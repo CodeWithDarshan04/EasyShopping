@@ -36,7 +36,7 @@ void initState(){
     Get.put(GetUserDataController());
     var userData = await getUserDataController.getUserData(user!.uid);
     if(userData[0]['isAdmin'] == true){
-      Get.offAll(()=> AdminMainScreemn());
+      Get.offAll(()=> AdminMainScreen());
     }else{
       Get.offAll(()=> MainScreen());
     }

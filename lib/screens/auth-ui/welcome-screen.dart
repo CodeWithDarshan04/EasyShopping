@@ -7,6 +7,8 @@ import 'package:vijayho/screens/auth-ui/Sign-in-screen.dart';
 import 'package:vijayho/utils/app-constant.dart';
 
 import '../../controllers/googlr-sign-in-controller.dart';
+
+// import '../../controllers/google-sign-in-controller.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 
@@ -98,7 +100,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Get.off(() => SignInScreen());
+                      Get.to(() => SignInScreen());
                     },
                   ),
                 ),
